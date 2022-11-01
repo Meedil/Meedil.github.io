@@ -62,7 +62,7 @@ export default function PostAdder(props:postAdderProps){
                 {valid && valid.error && <div className="text-center btn btn-danger error-message col-10 col-sm-8 col-md-6 mb-3"> {valid.error.message} </div>}
             </div>
             <div className="row mb-3 justify-content-center">
-                <div className="d-flex align-items-start justify-content-space-between col-10 col-sm-8 col-md-6">
+                <div className="d-flex align-items-start justify-content-space-between col-12 col-sm-8 col-md-6">
                     <label htmlFor="post-name" className="mt-2 me-4">Name</label>
                     <div className="w-100">
                         <input autoComplete={"off"} name="post-name" type="text" className="form-control" onChange={(e) => {setPhotoName(e.target.value)}}/>
@@ -70,14 +70,13 @@ export default function PostAdder(props:postAdderProps){
                             <div>required*</div>
                             <div>
                                 <div>letters, -, and commas are allowed</div>
-                                <div>length must be between 5 and 30</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="row my-3 justify-content-center">
-                <div className="d-flex align-items-center col-10 col-sm-8 col-md-6">
+                <div className="d-flex align-items-center col-12 col-sm-8 col-md-6">
                     <label htmlFor="post-description" className="me-4">Description</label>
                     <div className="w-100" >
                         <textarea name="post-description" className="form-control" maxLength={255} onChange={((e)=>{setDescription(e.target.value)})} />
@@ -89,10 +88,10 @@ export default function PostAdder(props:postAdderProps){
                 </div>
             </div>
             <div className="row my-3 justify-content-center">
-                <div className="d-flex align-items-start col-10 col-sm-8 col-md-6">
+                <div className="d-flex align-items-start col-12 col-sm-8 col-md-6">
                     <label htmlFor="post-photo" className="mt-2 me-4">Photo</label>
                     <div className="w-100">
-                        <input className="form-control" name="post-photo" type="file" accept="image/jpg, image/jpeg, image/png" onChange={handlePictureUrl}/>
+                        <input className="form-control" name="post-photo" type="file" accept="image/jpg image/jpeg image/png" onChange={handlePictureUrl}/>
                         <div className="d-flex justify-content-between validation-requirements fst-italic">
                             <div>required*</div>
                             <div>jpg / jpeg / png</div>

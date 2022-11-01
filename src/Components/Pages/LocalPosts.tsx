@@ -18,7 +18,7 @@ export default function LocalPosts(props:localPostsProps){
     const {localPosts} = props;
 
     const posts = localPosts.posts.map((details, index) => 
-    <div key={details.id} className={"gy-5 col-8 col-md-6 col-lg-4"}>
+    <div key={details.id} className={"gy-5 col-12 col-sm-8 col-md-6 col-lg-4"}>
         <UserPost details={details} local={true} toggleLike={()=>{props.toggleLike(index)}} delete={() => {props.deletePost(index)}}/>
     </div>
     )

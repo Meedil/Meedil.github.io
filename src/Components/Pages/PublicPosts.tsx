@@ -76,8 +76,8 @@ export default function PublicPosts(){
 
     const toggleLike = (index) => {
         const dataCopy = postData.slice();
+
         dataCopy[index].likedByUser = !dataCopy[index].likedByUser;
-        console.log(dataCopy[index].likedByUser)
         dataCopy[index].likes += (dataCopy[index].likedByUser ? 1 : -1);
         setPostData(dataCopy);
         
@@ -86,7 +86,7 @@ export default function PublicPosts(){
         localStorage.setItem("publicsLiked", JSON.stringify(storageSyncedLikes));
     }
 
-    const posts = postData.map((details, index) => <div key={details.id} className={"gy-5 col-8 col-md-6 col-lg-4 "}>
+    const posts = postData.map((details, index) => <div key={details.id} className={"gy-5 col-12 col-sm-8 col-md-6 col-lg-4"}>
         <UserPost  details={details} local={false} toggleLike={() => toggleLike(index)}/>
     </div>)
 
@@ -94,7 +94,7 @@ export default function PublicPosts(){
         <Navbar />
         <div className="container mt-5">
             <div className="row justify-content-center">{posts}</div>
-            <div ref={loaderRef} className="row justify-content-center my-2">Loading more...</div>
+            <div ref={loaderRef} className="row justify-content-center my-4 fw-bold">Loading more...</div>
         </div>
     </div>)
 }
