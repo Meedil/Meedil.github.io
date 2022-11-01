@@ -1,0 +1,10 @@
+.validation-requirements div{
+    font-size: 11pt;
+    color: #777;
+}
+.error-message{
+    cursor: default !important;
+}
+.error-message:hover{
+    background-color: #dc3545 !important;
+}

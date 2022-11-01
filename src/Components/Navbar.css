@@ -1,0 +1,7 @@
+.my-nav{
+    box-shadow: 0 -3px 10px 0px rgba(0,0,0,0.5);
+    align-items: center;
+}
+.add-post-btn{
+    background-color: var(--bs-primary);
+}
