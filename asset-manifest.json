@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.4d7d6cf6.css",
-    "main.js": "/static/js/main.24e670b7.js",
+    "main.css": "/static/css/main.7f46153b.css",
+    "main.js": "/static/js/main.8beab03b.js",
     "static/js/787.55fde29c.chunk.js": "/static/js/787.55fde29c.chunk.js",
     "static/media/Ghalaba Instagram - 256x256.png": "/static/media/Ghalaba Instagram - 256x256.5f62dc505e457ea6cb19.png",
     "index.html": "/index.html",
-    "main.4d7d6cf6.css.map": "/static/css/main.4d7d6cf6.css.map",
-    "main.24e670b7.js.map": "/static/js/main.24e670b7.js.map",
+    "main.7f46153b.css.map": "/static/css/main.7f46153b.css.map",
+    "main.8beab03b.js.map": "/static/js/main.8beab03b.js.map",
     "787.55fde29c.chunk.js.map": "/static/js/787.55fde29c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d7d6cf6.css",
-    "static/js/main.24e670b7.js"
+    "static/css/main.7f46153b.css",
+    "static/js/main.8beab03b.js"
   ]
 }
