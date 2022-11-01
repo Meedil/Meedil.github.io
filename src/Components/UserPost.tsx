@@ -44,19 +44,19 @@ export default function UserPost({details, local, toggleLike, ...props}:postProp
                 {local && <FontAwesomeIcon className='c-pointer' icon={faTrash} onClick={() => props.delete()} />}
             </div>
             <div className="img-container">
-                <img className="post-photo" src={details.image} alt={details.photoDescription} />
+                {details.image && <img className="post-photo" src={details.image} alt={details.photoDescription} />}
             </div>
             <div className="post-footer rounded p-3">
                 <div className='w-100 d-flex align-items-center'>
                     <h6 className='my-0 me-1 me-sm-2'>{details.photoName || "no name available"}</h6>
-                    <span className='likes-num'>{details.likes} likes</span>
+                    <span className='likes-num'>{details.likes || 0} likes</span>
                     <div className='ms-auto ps-4'>
                         { details.likedByUser ?
                         <FontAwesomeIcon className='h4 mb-0 like-icon c-pointer' icon={faSolidHeart} onClick={toggleLike} />:
                         <FontAwesomeIcon className='h4 mb-0 like-icon c-pointer' icon={faHeart} onClick={toggleLike}/> }
                     </div>
                 </div>
-                <p className='post-description shrunk-text'>{details.photoDescription || "no description available"}</p>
+                <p className='post-description shrunk-text mt-1'>{details.photoDescription || "no description available"}</p>
             </div>
         </div>
     )
