@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import PostDetails from "../Types/PostDetails";
 import LocalPosts from "./Pages/LocalPosts";
 import PostAdder from "./Pages/PostAdder";
 import PublicPosts from "./Pages/PublicPosts";

@@ -5,3 +5,8 @@
 .add-post-btn{
     background-color: var(--bs-primary);
 }
+@media only screen and (max-width: 400px) {
+    .shrink-text{
+        font-size: 12px !important;
+    }
+}
