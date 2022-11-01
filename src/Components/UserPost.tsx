@@ -56,7 +56,7 @@ export default function UserPost({details, local, toggleLike, ...props}:postProp
                         <FontAwesomeIcon className='h4 mb-0 like-icon c-pointer' icon={faHeart} onClick={toggleLike}/> }
                     </div>
                 </div>
-                <p className='post-description shrunk-text'>{details.photoDescription || "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta, expedita?"}</p>
+                <p className='post-description shrunk-text'>{details.photoDescription || "no description available"}</p>
             </div>
         </div>
     )

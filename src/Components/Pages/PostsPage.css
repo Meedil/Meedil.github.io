@@ -8,3 +8,8 @@
 .error-message:hover{
     background-color: #dc3545 !important;
 }
+.no-posts{
+    color:#999;
+    user-select: none;
+    width: fit-content;
+}

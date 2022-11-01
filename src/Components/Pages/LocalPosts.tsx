@@ -1,4 +1,3 @@
-import PostDetails from "../../Types/PostDetails";
 import Navbar from "../Navbar";
 import UserPost from "../UserPost";
 import "./PostsPage.css";
@@ -27,7 +26,8 @@ export default function LocalPosts(props:localPostsProps){
     return <>
     <Navbar />
     <div className="container mt-5 pt-5">
-        <div className="row justify-content-center">{posts}</div>
+         <div className="row justify-content-center">{posts.length ? posts : <h1 className="no-posts">NO LOCAL POSTS AVAILABLE</h1>}</div>
+        
     </div>
     </>;
 }

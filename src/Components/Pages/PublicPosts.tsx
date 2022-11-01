@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PostDetails from "../../Types/PostDetails";
 import Navbar from "../Navbar";
 import UserPost from "../UserPost";
@@ -13,29 +13,65 @@ import "./PostsPage.css";
 
 var storageSyncedLikes:string[] = JSON.parse(localStorage.getItem("publicsLiked")) || [];
 
+var pagenum = 1;
+var postsLoaded:PostDetails[] = [];
+
 export default function PublicPosts(){
     const [postData, setPostData] = useState<PostDetails[]>([]);
+    const [pagesLoaded, setPagesLoaded] = useState(0);
+    const loaderRef = useRef();
+    
+    const loadMorePosts = (entries:IntersectionObserverEntry[]) => {
+        if(!entries[0].isIntersecting) return;
+        console.log('intesecting');
+        const loadedPosts =  axios.get(`https://api.unsplash.com/photos/?client_id=msi92vAUtdMagF7SOQKE9ju3ayR9sMTWfnLWYugAqXM&page=${pagenum++}&order_by=latest&per_page=24`).then((resp) => {
+            const dataExtract = resp.data.map((photo) => {
+                let post:PostDetails = {
+                    id: photo.id,
+                    username: photo.user.username,
+                    userProfilePic: photo.user.profile_image.small,
+                    image: photo.urls.small,
+                    photoName: '',
+                    photoDescription: photo.description,
+                    likedByUser: storageSyncedLikes.includes(photo.id),
+                    likes: 0
+                };
+                post.likes = photo.likes + (post.likedByUser ? 1 : 0);
+                return post;
+            });
+            setPostData(postsLoaded.concat(dataExtract))
+            console.log(postsLoaded, 'page: ', pagenum);
+        });
+        
+    }
     
     useEffect(() => {
         const firstLoad = axios.get("https://api.unsplash.com/photos/?client_id=msi92vAUtdMagF7SOQKE9ju3ayR9sMTWfnLWYugAqXM&order_by=latest&per_page=24")
-    .then((resp) => {
-        const dataExtract = resp.data.map((photo) => {
-            let post:PostDetails = {
-                id: photo.id,
-                username: photo.user.username,
-                userProfilePic: photo.user.profile_image.small,
-                image: photo.urls.small,
-                photoName: '',
-                photoDescription: photo.description,
-                likedByUser: storageSyncedLikes.includes(photo.id),
-                likes: 0
-            };
-            post.likes = photo.likes + (post.likedByUser ? 1 : 0);
-            return post;
-        })
-        setPostData(dataExtract);
-    });
+        .then((resp) => {
+            const dataExtract = resp.data.map((photo) => {
+                let post:PostDetails = {
+                    id: photo.id,
+                    username: photo.user.username,
+                    userProfilePic: photo.user.profile_image.small,
+                    image: photo.urls.small,
+                    photoName: '',
+                    photoDescription: photo.description,
+                    likedByUser: storageSyncedLikes.includes(photo.id),
+                    likes: 0
+                };
+                post.likes = photo.likes + (post.likedByUser ? 1 : 0);
+                return post;
+            })
+            setPostData(dataExtract);
+            setPagesLoaded(pagesLoaded+1);
+        });
+
+        const intersectionObserver = new IntersectionObserver(loadMorePosts);
+        intersectionObserver.observe(loaderRef.current);
     }, []);
+    useEffect(() => {
+        postsLoaded = postData;
+    }, [postData])
     
 
     const toggleLike = (index) => {
@@ -58,6 +94,7 @@ export default function PublicPosts(){
         <Navbar />
         <div className="container mt-5">
             <div className="row justify-content-center">{posts}</div>
+            <div ref={loaderRef} className="row justify-content-center my-2">Loading more...</div>
         </div>
     </div>)
 }
