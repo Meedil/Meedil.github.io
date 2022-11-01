@@ -44,7 +44,7 @@ export default function UserPost({details, local, toggleLike, ...props}:postProp
                 {local && <FontAwesomeIcon className='c-pointer' icon={faTrash} onClick={() => props.delete()} />}
             </div>
             <div className="img-container">
-                {details.image && <img className="post-photo" src={details.image} alt={details.photoDescription} />}
+                {details.image && <img className="post-photo" src={details.image} alt={details.photoDescription} onDoubleClick={toggleLike}/>}
             </div>
             <div className="post-footer rounded p-3">
                 <div className='w-100 d-flex align-items-center'>

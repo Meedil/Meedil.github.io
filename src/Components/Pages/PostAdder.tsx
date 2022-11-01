@@ -76,7 +76,7 @@ export default function PostAdder(props:postAdderProps){
                                 <div className="d-flex justify-content-between validation-requirements fst-italic">
                                     <div>required*</div>
                                     <div>
-                                        <div>letters, -, and commas are allowed</div>
+                                        <div className="text-end">letters, -, and commas are allowed</div>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ export default function PostAdder(props:postAdderProps){
                         <div className="d-flex align-items-start col-12">
                             <label htmlFor="post-photo" className="mt-2 me-4">Photo</label>
                             <div className="w-100">
-                                <input className="form-control" name="post-photo" type="file" accept="image/jpg image/jpeg image/png" onChange={handlePictureUrl}/>
+                                <input className="form-control" name="post-photo" type="file" accept=".png, .jpg, .jpeg" onChange={handlePictureUrl}/>
                                 <div className="d-flex justify-content-between validation-requirements fst-italic">
                                     <div>required*</div>
                                     <div>jpg / jpeg / png</div>
@@ -106,7 +106,7 @@ export default function PostAdder(props:postAdderProps){
                             </div>
                         </div>
                     </div>
-                    <div className="row justify-content-center"><div className="d-flex justify-content-center"><button type="submit" className="btn btn-primary">ADD</button></div></div>
+                    <div className="row justify-content-center"><div className="d-flex justify-content-center"><button type="submit" className="btn btn-primary mb-5">ADD</button></div></div>
                 </form>
             </div>
         </div>

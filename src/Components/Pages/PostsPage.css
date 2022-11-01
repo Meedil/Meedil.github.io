@@ -1,3 +1,11 @@
+.page-title{
+    font: "Sego UI", Roboto, helvatica, arial;
+}
+.horizontal-line{
+    background-color: black;
+    width: 20%;
+    height: 5px;
+}
 .validation-requirements div{
     font-size: 11pt;
     color: #777;
@@ -12,4 +20,5 @@
     color:#999;
     user-select: none;
     width: fit-content;
+    text-align: center;
 }

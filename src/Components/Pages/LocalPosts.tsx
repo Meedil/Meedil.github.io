@@ -25,9 +25,15 @@ export default function LocalPosts(props:localPostsProps){
 
     return <>
     <Navbar />
+    <div className="mt-5 pt-5">
+        <div className="page-title my-2 d-flex h1 align-items-center justify-content-center">
+            <div className="horizontal-line"></div>
+            <div className="px-3">local</div>
+            <div className="horizontal-line"></div>
+        </div>
+    </div>
     <div className="container mt-5 pt-5">
          <div className="row justify-content-center">{posts.length ? posts : <h1 className="no-posts">NO LOCAL POSTS AVAILABLE</h1>}</div>
-        
     </div>
     </>;
 }
