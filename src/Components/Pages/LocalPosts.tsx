@@ -32,7 +32,7 @@ export default function LocalPosts(props:localPostsProps){
             <div className="horizontal-line"></div>
         </div>
     </div>
-    <div className="container mt-5 pt-5">
+    <div className="container">
          <div className="row justify-content-center">{posts.length ? posts : <h1 className="no-posts">NO LOCAL POSTS AVAILABLE</h1>}</div>
     </div>
     </>;
