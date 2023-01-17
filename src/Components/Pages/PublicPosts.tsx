@@ -20,6 +20,7 @@ export default function PublicPosts(){
     const [postData, setPostData] = useState<PostDetails[]>([]);
     const [pagesLoaded, setPagesLoaded] = useState(0);
     const loaderRef = useRef();
+    console.log("public posts loading");
     
     const loadMorePosts = (entries:IntersectionObserverEntry[]) => {
         if(!entries[0].isIntersecting) return;

@@ -32,8 +32,8 @@ export default function Router(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Navigate to='/public'/>} path='/'/>
-                <Route element={<PublicPosts />} path='/public' />
+                <Route element={<Navigate to='/ghalaba-instagram/public'/>} path='/'/>
+                <Route element={<PublicPosts />} path='/ghalaba-instagram/public' />
                 <Route element={<LocalPosts deletePost={(i) => deletePost(i)} localPosts={localPosts} setLocalPosts={setLocalPosts} toggleLike={toggleLike} />} path='/local' />
                 <Route element={<PostAdder localPosts={localPosts} setLocalPosts={setLocalPosts} />}path='/add-post'/>
             </Routes>
