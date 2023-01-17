@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import PostDetails from "../../Types/PostDetails"
 import Navbar from "../Navbar"
+import { homepage } from "../Router"
 import UserPost from "../UserPost"
 import "./PostAdder.css"
 
@@ -53,7 +54,7 @@ export default function PostAdder(props:postAdderProps){
         localPostsCopy.posts = localPostsCopy.posts.concat([{id: nextId.toString(), photoName: result.value.name, photoDescription: result.value.description, username: "aliHaitham", userProfilePic: "", likes: 0, image: result.value.pictureUrl, likedByUser: false}])
         setNextId(nextId+1);
         props.setLocalPosts(localPostsCopy);
-        navigate('/local');
+        navigate(homepage+"/local");
     }
 
     return <>

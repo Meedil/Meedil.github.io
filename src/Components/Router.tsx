@@ -4,39 +4,69 @@ import LocalPosts from "./Pages/LocalPosts";
 import PostAdder from "./Pages/PostAdder";
 import PublicPosts from "./Pages/PublicPosts";
 
-const loadedLocalPosts = JSON.parse(localStorage.getItem('localPosts')) || {posts: []};
+export const homepage = "/ghalaba-instagram";
 
-export default function Router(){
-    const [localPosts, setLocalPosts] = useState<any>(loadedLocalPosts);
-    console.log("rendering router");
+const loadedLocalPosts = JSON.parse(localStorage.getItem("localPosts")) || {
+  posts: [],
+};
 
-    useEffect(() => {
-        localStorage.setItem('localPosts', JSON.stringify(localPosts));
-    }, [localPosts]);
+export default function Router() {
+  const [localPosts, setLocalPosts] = useState<any>(loadedLocalPosts);
+  console.log("rendering router");
 
-    const toggleLike = (index) => {
-        let localPostsCopy = {...localPosts};
-        localPostsCopy.posts[index].likedByUser = !localPostsCopy.posts[index].likedByUser;
-        localPostsCopy.posts[index].likes += localPostsCopy.posts[index].likedByUser ? 1 : -1;
-        setLocalPosts(localPostsCopy);
-    }
+  useEffect(() => {
+    localStorage.setItem("localPosts", JSON.stringify(localPosts));
+  }, [localPosts]);
 
-    const deletePost = (index) => {
-        let localPostsCopy = {...localPosts};
-        console.log('deleting: ', localPostsCopy.posts[index], 'from: ', localPostsCopy);
-        
-        localPostsCopy.posts.splice(index, 1);
-        setLocalPosts(localPostsCopy);
-    }
+  const toggleLike = (index) => {
+    let localPostsCopy = { ...localPosts };
+    localPostsCopy.posts[index].likedByUser =
+      !localPostsCopy.posts[index].likedByUser;
+    localPostsCopy.posts[index].likes += localPostsCopy.posts[index].likedByUser
+      ? 1
+      : -1;
+    setLocalPosts(localPostsCopy);
+  };
 
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route element={<Navigate to='/ghalaba-instagram/public'/>} path='/'/>
-                <Route element={<PublicPosts />} path='/ghalaba-instagram/public' />
-                <Route element={<LocalPosts deletePost={(i) => deletePost(i)} localPosts={localPosts} setLocalPosts={setLocalPosts} toggleLike={toggleLike} />} path='/local' />
-                <Route element={<PostAdder localPosts={localPosts} setLocalPosts={setLocalPosts} />}path='/add-post'/>
-            </Routes>
-        </BrowserRouter>
-    )
+  const deletePost = (index) => {
+    let localPostsCopy = { ...localPosts };
+    console.log(
+      "deleting: ",
+      localPostsCopy.posts[index],
+      "from: ",
+      localPostsCopy
+    );
+
+    localPostsCopy.posts.splice(index, 1);
+    setLocalPosts(localPostsCopy);
+  };
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route
+          element={<Navigate to={homepage + "/public"} />}
+          path={homepage}
+        />
+        <Route element={<PublicPosts />} path={homepage + "/public"} />
+        <Route
+          element={
+            <LocalPosts
+              deletePost={(i:number) => deletePost(i)}
+              localPosts={localPosts}
+              setLocalPosts={setLocalPosts}
+              toggleLike={toggleLike}
+            />
+          }
+          path={homepage+"/local"}
+        />
+        <Route
+          element={
+            <PostAdder localPosts={localPosts} setLocalPosts={setLocalPosts} />
+          }
+          path={homepage+"/add-post"}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
