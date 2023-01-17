@@ -8,6 +8,7 @@ const loadedLocalPosts = JSON.parse(localStorage.getItem('localPosts')) || {post
 
 export default function Router(){
     const [localPosts, setLocalPosts] = useState<any>(loadedLocalPosts);
+    console.log("rendering router");
 
     useEffect(() => {
         localStorage.setItem('localPosts', JSON.stringify(localPosts));
