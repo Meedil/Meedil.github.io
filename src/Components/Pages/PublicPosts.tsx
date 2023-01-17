@@ -92,9 +92,14 @@ export default function PublicPosts(){
 
     return (<div>
         <Navbar />
-        <div className="container mt-5">
+        <div className="container mt-5 pt-5">
+            <div className="page-title my-2 d-flex h1 align-items-center justify-content-center">
+                <div className="horizontal-line"></div>
+                <div className="px-3">public</div>
+                <div className="horizontal-line"></div>
+            </div>
             <div className="row justify-content-center">{posts}</div>
-            <div ref={loaderRef} className="row justify-content-center my-4 fw-bold">Loading more...</div>
+            <div ref={loaderRef} className="row justify-content-center my-5 fw-bold">Loading more...</div>
         </div>
     </div>)
 }
